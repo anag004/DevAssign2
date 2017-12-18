@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TODO app</title>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<style type="text/css">
+		#inputbox {
+			border-radius: 0px;
+			width: 40vw;
+			font-family: 'Open Sans', sans-serif;
+			margin-left: 25vw;
+			font-size: 20px;
+			color: #373737;
+			padding-left: 2vw;
+			padding-right: 2vw;
+			padding-top: 1vw;
+			padding-bottom: 1vw;
+			border: 0px;
+			margin-top: 5px;
+		}
+
+		#inputbox:focus {
+			outline: 0;
+		}
+
+		#titlebox {
+			font-family: 'Open Sans', sans-serif;
+			color: white;
+			background-color: #373737;
+			width: 40vw;
+			padding-left: 2vw;
+			padding-right: 2vw;
+			padding-top: 1vw;
+			padding-bottom: 1vw;
+			font-size: 20px;
+			margin-left: 25vw;
+		}
+
+		body {
+			background-color: #f4f4f4;
+		}
+
+		.cont {
+			font-family: 'Open Sans', sans-serif;
+			width: 40vw;
+			padding-left: 2vw;
+			padding-right: 2vw;
+			padding-top: 1vw;
+			padding-bottom: 1vw;
+			font-size: 20px;
+			margin-left: 25vw;
+			color: #373737;
+			background-color: #ffffff;
+			margin-top: 5px;
+		}
+	</style>
+	<script type="text/javascript">
+		var n = 0;
+
+		window.onload = function() {
+			var tb = document.getElementById("inputbox");
+			tb.value = "Enter the todo and press enter.";
+			tb.style = "color: #979899";
+		}
+
+		function focusScript() {
+			var tb = document.getElementById("inputbox");
+			tb.value ='';
+			tb.style="color: #373737"; 
+			
+		}
+
+		function runScript(e) {
+			if (e.keyCode == 13) {
+				event.preventDefault();
+				var tb = document.getElementById("inputbox");
+				var val = tb.value;
+				tb.value = "Enter the todo and press enter.";
+				tb.style = "color: #979899";
+				var newbox = document.createElement('div');
+				n += 1;
+				console.log(val);
+				var x = document.getElementsByTagName("BODY")[0];
+				
+				var node = document.createTextNode(val);
+				newbox.appendChild(node);
+				x.appendChild(newbox);
+				newbox.id = "contbox" + n.toString();
+				console.log(newbox.id);
+				newbox.style ="font-family: 'Open Sans', sans-serif;width: 40vw; padding-left: 2vw; padding-right: 2vw; padding-top: 1vw; padding-bottom: 1vw; font-size: 20px; margin-left: 25vw; color: #373737; background-color: #ffffff; margin-top: 5px;"
+			}
+			return false;
+		} 
+
+	</script>
+</head>
+<body>
+	<form>
+		<div id="titlebox">Your Todos</div>
+		<input type="name" name="todo" id="inputbox" onkeypress="runScript(event);" onclick="focusScript()">
+		<div class="cont">Todo1</div>
+		<div class="cont">Todo2</div>
+	</form>
+</body>
+</html>
